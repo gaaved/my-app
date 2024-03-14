@@ -24,8 +24,8 @@ const Form = ({ onSubmit }) => {
                                 message: 'Invalid email address'
                             } }}
                         render={({ field }) => (
-                            <div style={{ width: '300px' }}>
-                                <Input {...field} placeholder="Enter your email" style={{ width: '100%' }} />
+                            <div className="input">
+                                <Input {...field} placeholder="Enter your email" />
                                 {errors.email && <span style={{ color: 'red' }}>{errors.email.message}</span>}
                             </div>
                         )}
@@ -40,8 +40,8 @@ const Form = ({ onSubmit }) => {
                                 message: 'Invalid password'
                             } }}
                         render={({ field }) => (
-                            <div style={{ width: '300px' }}>
-                                <Input.Password {...field} placeholder="Enter your password" style={{ width: '100%' }} />
+                            <div className="input">
+                                <Input.Password {...field} placeholder="Enter your password" />
                                 {errors.password && <span style={{ color: 'red' }}>{errors.password.message}</span>}
                             </div>
                         )}

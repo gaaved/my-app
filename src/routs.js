@@ -1,34 +1,47 @@
 import React from "react";
-import {Button} from "antd";
+import {Button, Menu} from "antd";
+import {Header} from "antd/es/layout/layout";
+import {useLocation} from "react-router-dom";
+
 const Routs = () => {
     const logout = () => {
-        console.log('logout');
         localStorage.setItem('isAuth', false);
-        console.log(localStorage);
         window.location.reload();
     };
+    const location = useLocation();
+    const allowedKeys = ['people', 'planets', 'starships'];
+
+
+    const items = allowedKeys.map((key) => ({
+        label: (
+            <a href={`/${key}`}>
+                {key[0].toUpperCase() + key.slice(1)}
+            </a>
+        ),
+        key: `${key}`,
+    }));
 
     return (
         <div id="sidebar">
-            <nav>
-                <ul>
-                    <li>
-                        <a href={`/people`}>People</a>
-                    </li>
-                    <li>
-                        <a href={`/planets`}>Planets</a>
-                    </li>
-                    <li>
-                        <a href={`/starships`}>Starships</a>
-                    </li>
-                    <li>
-                        <a href={`/error`}>Error</a>
-                    </li>
-                    <li>
-                        <Button onClick={logout} />
-                    </li>
-                </ul>
-            </nav>
+            <Header
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
+                <div className="demo-logo" />
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    defaultSelectedKeys={[location.pathname.substring(1)]}
+                    items={items}
+                    style={{
+                        flex: 1,
+                        minWidth: 0,
+                    }}
+                />
+                <Button type="primary" onClick={logout}>Logout</Button>
+            </Header>
         </div>
     );
 }

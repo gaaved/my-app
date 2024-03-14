@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import Login from './Login';
 import {
     createBrowserRouter, redirect,
     RouterProvider,
@@ -13,8 +12,6 @@ import Starship from "./pages/starship";
 
 const isAuth = localStorage.getItem('isAuth');
 
-console.log(isAuth, 'isAuth')
-
 async function loader() {
     if (isAuth === 'false') {
         return redirect("/");
@@ -25,7 +22,7 @@ async function loader() {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <Login />,
         loader: () => {
             if (isAuth === 'true') {
                 return redirect("/people");

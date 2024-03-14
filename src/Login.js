@@ -1,19 +1,18 @@
 import React from 'react';
 import Form from './Form';
-import './App.css';
+import './Style.css';
 
 
-const App = () => {
+const Login = () => {
 
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="Login">
+            <header className="Login-header">
                 <h4>Welcome to Test App</h4>
                 <Form />
             </header>
-            <div id="detail"></div>
         </div>
     );
 }
 
-export default App;
+export default Login;

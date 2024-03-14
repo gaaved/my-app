@@ -10,8 +10,6 @@ export const simulateRequest = (data) => {
             });
         }, 5000);
     }).then((resolve) => {
-        console.log(resolve)
-        console.log(data)
         Validation(resolve, data)
     });
 };
@@ -21,8 +19,7 @@ export const Validation = (resolve, data) => {
         // Данные совпадают
         console.log('Data from request matches form data');
         localStorage.setItem('isAuth', true);
-
-        console.log(localStorage);
+        localStorage.setItem('userName', resolve.userName);
         window.location.reload();
 
     } else {
@@ -46,3 +43,13 @@ export const useSimulatedRequest = () => {
         triggerRequest,
     };
 };
+
+
+export async function fetchData(entity) {
+    try {
+        const response = await fetch(`https://ajax.test-danit.com/api/swapi/${entity}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
 
-
 const SubmitButton = ({ isSubmitting }) => {
 
     return (
