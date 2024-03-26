@@ -1,11 +1,9 @@
-import React from 'react';
-import { Button } from 'antd';
+import { Button } from "antd";
 
-const SubmitButton = ({ isSubmitting }) => {
-
-    return (
-        <Button type="primary" htmlType="submit" loading={isSubmitting}>Submit</Button>
-    );
-}
+const SubmitButton = ({ isLoading }) => (
+  <Button type="primary" htmlType="submit" loading={isLoading}>
+    Submit
+  </Button>
+);
 
 export default SubmitButton;

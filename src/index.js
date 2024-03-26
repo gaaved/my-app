@@ -1,60 +1,56 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Login from './Login';
+import ReactDOM from "react-dom/client";
 import {
-    createBrowserRouter, redirect,
-    RouterProvider,
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "./pages/error-page";
-import Planet from "./pages/planet";
-import People from "./pages/people";
-import Starship from "./pages/starship";
+import Login from "./Login";
+import ErrorPage from "./pages/Error-page";
+import Planet from "./pages/Planet";
+import People from "./pages/People";
+import Starship from "./pages/Starship";
 
-const isAuth = localStorage.getItem('isAuth');
+const isAuth = localStorage.getItem("isAuth");
 
-async function loader() {
-    if (isAuth === 'false') {
-        return redirect("/");
-    }
-    return null;
-}
+const loader = () => {
+  if (isAuth === false) {
+    return redirect("/");
+  }
+  return null;
+};
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Login />,
-        loader: () => {
-            if (isAuth === 'true') {
-                return redirect("/people");
-            }
-            return null;
-        },
-        errorElement: <ErrorPage />,
+  {
+    path: "/",
+    element: <Login />,
+    loader: () => {
+      if (isAuth === true) {
+        return redirect("/people");
+      }
+      return null;
     },
-    {
-        path: "/people",
-        loader: loader,
-        element: <People />,
-    },
-    {
-        path: "/starships",
-        loader: loader,
-        element: <Starship />,
-    },
-    {
-        path: "/planets",
-        loader: loader,
-        element: <Planet />,
-    },
-    {
-        path: "/error",
-        element: <ErrorPage />,
-    },
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/people",
+    loader,
+    element: <People />,
+  },
+  {
+    path: "/starships",
+    loader,
+    element: <Starship />,
+  },
+  {
+    path: "/planets",
+    loader,
+    element: <Planet />,
+  },
+  {
+    path: "/error",
+    element: <ErrorPage />,
+  },
 ]);
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-      <RouterProvider router={router}>
-      </RouterProvider>
-  </React.StrictMode>
-);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={router}></RouterProvider>);
