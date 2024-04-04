@@ -1,6 +1,6 @@
 import { useRequest } from "ahooks";
 import { Table } from "antd";
-import { fetchData } from "../SimulatedRequest";
+import { fetchData } from "../utils";
 import UserName from "../UserName";
 import Layout from "../Layout";
 

@@ -1,7 +1,8 @@
 import { useForm, Controller } from "react-hook-form";
 import { Flex, Input } from "antd";
 import SubmitButton from "./SubmitButton";
-import { useSimulatedRequest } from "./SimulatedRequest";
+import { simulateRequest } from "./utils";
+import { useRequest } from "ahooks";
 
 const Form = () => {
   const {
@@ -9,10 +10,11 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { loading, triggerRequest } = useSimulatedRequest();
+
+  const { run, loading } = useRequest(simulateRequest);
 
   return (
-    <form onSubmit={handleSubmit(triggerRequest)}>
+    <form onSubmit={handleSubmit(run)}>
       <Flex align="flex-start" gap="small" vertical>
         <Controller
           name="email"

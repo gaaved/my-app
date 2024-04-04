@@ -1,5 +1,5 @@
 import { Button, Menu } from "antd";
-import { Header } from "antd/es/layout/layout";
+
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -26,12 +26,7 @@ const HeaderMenu = () => {
   };
 
   return (
-    <Header
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <div className="header">
       <div className="demo-logo" />
       <Menu
         theme="dark"
@@ -46,7 +41,7 @@ const HeaderMenu = () => {
       <Button type="primary" onClick={logout}>
         Logout
       </Button>
-    </Header>
+    </div>
   );
 };
 

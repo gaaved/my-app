@@ -1,12 +1,10 @@
 import HeaderMenu from "./HeaderMenu";
 
-const Layout = ({ children }) => {
-  return (
-    <div>
-      <HeaderMenu />
-      <div className="content">{children}</div>
-    </div>
-  );
-};
+const Layout = ({ children }) => (
+  <div>
+    <HeaderMenu />
+    <div className="content">{children}</div>
+  </div>
+);
 
 export default Layout;
