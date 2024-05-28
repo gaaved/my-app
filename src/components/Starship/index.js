@@ -1,8 +1,9 @@
 import { useRequest } from "ahooks";
 import { Table } from "antd";
-import { fetchData } from "../utils";
-import UserName from "../UserName";
+import { fetchData } from "../../helpers/utils";
+import UserName from "../UserName/UserName";
 import Layout from "../Layout";
+import { ErrorMessage } from "./styles";
 
 const Starship = () => {
   const { loading, data, error } = useRequest(() => fetchData("starships"));
@@ -85,7 +86,7 @@ const Starship = () => {
         loading={loading}
         rowKey={(record) => record.id}
       />
-      {error && <div className="error-message">{error.message}</div>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </Layout>
   );
 };

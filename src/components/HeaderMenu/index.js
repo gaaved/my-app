@@ -3,6 +3,7 @@ import { Button, Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Header } from "./styles";
 
 const HeaderMenu = () => {
   const location = useLocation();
@@ -26,8 +27,7 @@ const HeaderMenu = () => {
   };
 
   return (
-    <div className="header">
-      <div className="demo-logo" />
+    <Header>
       <Menu
         theme="dark"
         mode="horizontal"
@@ -41,7 +41,7 @@ const HeaderMenu = () => {
       <Button type="primary" onClick={logout}>
         Logout
       </Button>
-    </div>
+    </Header>
   );
 };
 

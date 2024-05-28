@@ -1,11 +1,14 @@
 import { useRequest } from "ahooks";
 import { Table } from "antd";
-import { fetchData } from "../utils";
-import UserName from "../UserName";
+import { fetchData } from "../../helpers/utils";
+import UserName from "../UserName/UserName";
 import Layout from "../Layout";
+import { ErrorMessage } from "./styles";
+import { useSelector } from "react-redux";
 
 const Planet = () => {
   const { loading, data, error } = useRequest(() => fetchData("planets"));
+  const cash = useSelector((state) => state.user.user);
 
   const columns = [
     {
@@ -63,6 +66,7 @@ const Planet = () => {
   return (
     <Layout>
       <UserName />
+      <h1>{cash}</h1>
       <h1>It is your list of Planets</h1>
       <Table
         dataSource={data}
@@ -70,7 +74,7 @@ const Planet = () => {
         loading={loading}
         rowKey={(record) => record.id}
       />
-      {error && <div className="error-message">{error.message}</div>}
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
     </Layout>
   );
 };
