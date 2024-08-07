@@ -1,14 +1,14 @@
-import { useRequest } from "ahooks";
 import { Table } from "antd";
-import { fetchData } from "../../helpers/utils";
 import UserName from "../UserName/UserName";
 import Layout from "../Layout";
 import { ErrorMessage } from "./styles";
 import { useSelector } from "react-redux";
+import { useGetPostsQuery } from "../../helpers/apiSlice";
 
 const Planet = () => {
-  const { loading, data, error } = useRequest(() => fetchData("planets"));
-  const cash = useSelector((state) => state.user.user);
+  const { data, error, isLoading } = useGetPostsQuery("planets");
+
+  const cash = useSelector((state) => state.users.user);
 
   const columns = [
     {
@@ -71,7 +71,7 @@ const Planet = () => {
       <Table
         dataSource={data}
         columns={columns}
-        loading={loading}
+        loading={isLoading}
         rowKey={(record) => record.id}
       />
       {error && <ErrorMessage>{error.message}</ErrorMessage>}

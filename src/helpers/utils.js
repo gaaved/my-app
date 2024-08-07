@@ -21,14 +21,3 @@ export const simulateRequest = async (data) => {
     console.error("Error during request:", error);
   }
 };
-
-export async function fetchData(entity) {
-  try {
-    const response = await fetch(
-      `https://ajax.test-danit.com/api/swapi/${entity}`,
-    );
-    return await response.json();
-  } catch (error) {
-    throw new Error(error);
-  }
-}

@@ -4,7 +4,7 @@ import SubmitButton from "../SubmitButton";
 import { simulateRequest } from "../../helpers/utils";
 import { useRequest } from "ahooks";
 import { FormDiv, InputDiv, InputError } from "./styles";
-import { setUserInfo } from "../../redux/actions";
+import { userAdded } from "../../redux/usersSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Form = () => {
     onSuccess: (result) => {
       if (result) {
         localStorage.setItem("isAuth", true);
-        dispatch(setUserInfo(result.email, result.userName));
+        dispatch(userAdded({ userName: result.userName, email: result.email }));
         navigate("/people", { replace: true });
       }
     },

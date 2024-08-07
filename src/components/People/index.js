@@ -1,12 +1,11 @@
 import { Table } from "antd";
-import { useRequest } from "ahooks";
-import { fetchData } from "../../helpers/utils";
 import UserName from "../UserName/UserName";
 import Layout from "../Layout";
 import { ErrorMessage } from "./styles";
+import { useGetPostsQuery } from "../../helpers/apiSlice";
 
 const People = () => {
-  const { loading, data, error } = useRequest(() => fetchData("people"));
+  const { data, error, isLoading } = useGetPostsQuery("people");
 
   const columns = [
     {
@@ -58,7 +57,7 @@ const People = () => {
       <Table
         dataSource={data}
         columns={columns}
-        loading={loading}
+        loading={isLoading}
         rowKey={(record) => record.id}
       />
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
