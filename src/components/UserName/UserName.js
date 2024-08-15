@@ -7,9 +7,9 @@ const UserName = () => {
   const userEmail = useSelector((state) => state.users.email);
 
   return (
-      <Text mark>
-        Username - {userName}, email - {userEmail}
-      </Text>
+    <Text mark>
+      Username - {userName}, email - {userEmail}
+    </Text>
   );
 };
 

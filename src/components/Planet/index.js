@@ -2,13 +2,10 @@ import { Table } from "antd";
 import UserName from "../UserName/UserName";
 import Layout from "../Layout";
 import { ErrorMessage } from "./styles";
-import { useSelector } from "react-redux";
 import { useGetPostsQuery } from "../../helpers/apiSlice";
 
 const Planet = () => {
   const { data, error, isLoading } = useGetPostsQuery("planets");
-
-  const cash = useSelector((state) => state.users.user);
 
   const columns = [
     {
@@ -66,7 +63,6 @@ const Planet = () => {
   return (
     <Layout>
       <UserName />
-      <h1>{cash}</h1>
       <h1>It is your list of Planets</h1>
       <Table
         dataSource={data}
