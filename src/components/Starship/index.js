@@ -1,12 +1,11 @@
-import { useRequest } from "ahooks";
 import { Table } from "antd";
-import { fetchData } from "../../helpers/utils";
 import UserName from "../UserName/UserName";
 import Layout from "../Layout";
 import { ErrorMessage } from "./styles";
+import { useGetPostsQuery } from "../../helpers/apiSlice";
 
 const Starship = () => {
-  const { loading, data, error } = useRequest(() => fetchData("starships"));
+  const { data, error, isLoading } = useGetPostsQuery("starships");
 
   const columns = [
     {
@@ -83,7 +82,7 @@ const Starship = () => {
       <Table
         dataSource={data}
         columns={columns}
-        loading={loading}
+        loading={isLoading}
         rowKey={(record) => record.id}
       />
       {error && <ErrorMessage>{error.message}</ErrorMessage>}

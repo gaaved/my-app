@@ -1,10 +1,12 @@
-import { createStore, combineReducers } from "redux";
-import reducer from "./reducers";
+import { configureStore } from "@reduxjs/toolkit";
+import usersReducer from "./usersSlice";
+import { apiSlice } from "../helpers/apiSlice";
 
-const rootReducer = combineReducers({
-  user: reducer,
+export default configureStore({
+  reducer: {
+    users: usersReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
-
-const store = createStore(rootReducer);
-
-export default store;

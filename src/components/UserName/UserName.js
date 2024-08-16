@@ -3,14 +3,13 @@ import { useSelector } from "react-redux";
 const { Text } = Typography;
 
 const UserName = () => {
-  const userName = useSelector((state) => state.user.userName);
-  const userEmail = useSelector((state) => state.user.email);
+  const userName = useSelector((state) => state.users.userName);
+  const userEmail = useSelector((state) => state.users.email);
+
   return (
-    <div id="userName">
-      <Text mark>
-        Username - {userName}, email - {userEmail}
-      </Text>
-    </div>
+    <Text mark>
+      Username - {userName}, email - {userEmail}
+    </Text>
   );
 };
 
